@@ -28,37 +28,8 @@ namespace AppearanceToggleService
 
                 SystemThemeNotifier.BroadcastThemeChange();
 
-                await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+                await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
             }
-        }
-    }
-
-    public class SystemThemeNotifier
-    {
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr SendMessageTimeout(
-            IntPtr hWnd,
-            uint Msg,
-            UIntPtr wParam,
-            string lParam,
-            uint fuFlags,
-            uint uTimeout,
-            out UIntPtr lpdwResult);
-
-        private const int HWND_BROADCAST = 0xffff;
-        private const uint WM_SETTINGCHANGE = 0x001A;
-        private const uint SMTO_ABORTIFHUNG = 0x0002;
-
-        public static void BroadcastThemeChange()
-        {
-            UIntPtr result;
-            SendMessageTimeout((IntPtr)HWND_BROADCAST,
-                WM_SETTINGCHANGE,
-                UIntPtr.Zero,
-                "ImmersiveColorSet",
-                SMTO_ABORTIFHUNG,
-                5000,
-                out result);
         }
     }
 }
