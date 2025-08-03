@@ -4,7 +4,7 @@ A simple .NET Worker Service that automatically switches Windows system appearan
 
 ## 🚀 How it works
 
-- Every 5 minutes, the service checks the current time.
+- Once every hour, the service checks the current time.
 - If the time is between 8 PM and 6 AM, it switches to **Dark Mode**.
 - Otherwise, it switches to **Light Mode**.
 - The service updates Windows registry keys:
