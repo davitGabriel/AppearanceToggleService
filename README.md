@@ -12,11 +12,9 @@ A simple .NET Worker Service that automatically switches Windows system appearan
   - `AppsUseLightTheme` and `SystemUsesLightTheme` values are changed.
 - After changing the registry, it broadcasts a `WM_SETTINGCHANGE` message so apps that support it can refresh.
 
-> ⚠️ Some apps like Chrome only read the system theme at startup and may require restarting to apply the new appearance.
-
 ## 🛠 Technologies
 
-- .NET 6+ Worker Service
+- .NET 8 Worker Service
 - Microsoft.Extensions.Hosting.WindowsServices
 - Runs as a native Windows Service.
 
